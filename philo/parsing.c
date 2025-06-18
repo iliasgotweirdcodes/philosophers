@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/04/16 17:17:47 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:19:21 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_error(char *message)
 	write(2, message, ft_strlen(message));
 }
 
-int	ft_check(char *str)
+long	ft_check_philo(char *str)
 {
-	int i = 0;
+	long i = 0;
 
 	if (!str || !str[i])
 		return (0);
@@ -47,7 +47,7 @@ int	parse_arguments(int ac, char **av, t_table *table)
 	i = 1;
 	while (i < ac)
 	{
-		if (!ft_check(av[i]) || ft_atoi(av[i]) <= 0)
+		if (!ft_check_philo(av[i]) || ft_atoi(av[i]) <= 0)
 		{
 			write(2, ERR_INPUT, 23);
 			return (0);

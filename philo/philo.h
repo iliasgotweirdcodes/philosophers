@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/04/16 17:32:31 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:24:34 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,48 +29,47 @@
 # define ERR_ARGS "Error: Wrong number of args!\n"
 # define ERR_INPUT "Error: Invalid input!\n"
 
-typedef struct s_philo t_philo;
-
-typedef struct s_table {
-	int		num_philos;
-	int		time_to_die;
-	int		must_eat;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		time_to_think;
-	long	simulation;
-	bool	dead;
-	t_philo	*philo;
-	pthread_mutex_t	*forks;
-	pthread_mutex_t	print;
-	pthread_mutex_t	meal;
-	pthread_mutex_t	deadlock;
-}	t_table;
-
 typedef struct s_philo {
 	int	id;
-	long	last_meal;
 	pthread_t	thread;
-	int number_of_meals;
+	int	last_meal;
+	int meals_eaten;
 	int	left;
 	int	right;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	t_table	*table;
+	struct s_table	*table;
 }	t_philo;
+
+typedef struct s_table
+{
+	int				num_philos;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				must_eat;
+	bool			dead;
+	long			start_time;
+	pthread_mutex_t	meal;
+	pthread_mutex_t	print;
+	pthread_mutex_t	deadlock;
+	pthread_mutex_t	*forks;
+	t_philo			*philo;
+}	t_table;
 
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		parse_arguments(int ac, char **av, t_table *table);
-long	get_time_ms(void);
+int	get_time_ms(void);
 void	ft_error(char *message);
-void	ft_usleep(long time, t_philo *philo);
+void	ft_usleep(int ms, t_philo *philo);
 void	ft_print_status(t_philo *philo, char *status);
 void	init_philo(t_table *table);
-void	*philo_routine(t_philo *p);
 void	init_mutexes(t_table *table);
-void	*simulation_monitor(t_table *table);
 void	ft_destroy_mutexes(t_table *table);
-int		is_dead(t_table *table);
+int	is_dead(t_table *table);
+void	*philo_routine(void *arg);
+void	*simulation_monitor(void *arg);
+void	init_philo(t_table *table);
 
 #endif

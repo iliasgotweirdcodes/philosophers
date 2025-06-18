@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/04/14 18:15:31 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:20:09 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_atoi(char *str)
 {
 	int		i;
 	int		sign;
-	long	res;
+	int	res;
 
 	i = 0;
 	sign = 1;

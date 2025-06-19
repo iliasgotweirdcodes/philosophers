@@ -6,13 +6,13 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:22:49 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:58:30 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	get_time_ms(void)
+long	get_time_ms(void)
 {
 	struct timeval	time;
 	if (gettimeofday(&time, NULL) == -1)
@@ -33,7 +33,7 @@ void	ft_print_status(t_philo *philo, char *status)
 {
 	long	timestamp;
 
-	pthread_mutex_lock(&philo->table->print); // use 'print' not 'prlong'
+	pthread_mutex_lock(&philo->table->print);
 	timestamp = get_time_ms() - philo->table->start_time;
 	if (!is_dead(philo->table))
 		printf("%ld %d %s\n", timestamp, philo->id + 1, status);

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:17:47 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:50:13 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ void	init_table(t_table *table)
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);
 	if (!table->philo || !table->forks)
 		ft_error(ERR_MALLOC);
-    table->start_time = get_time_ms();
-    printf("---> %ld\n", table->start_time);
-    exit(1);
 }
 void f()
 {

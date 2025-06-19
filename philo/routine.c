@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:21:06 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:40:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void	init_philo(t_table *table)
 	pthread_t	monitor;
 
 	i = 0;
+	// table->start_time = get_time_ms();
 	while (i < table->num_philos)
 	{
 		philo = &table->philo[i];

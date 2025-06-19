@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:19:21 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/18 22:41:20 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	parse_arguments(int ac, char **av, t_table *table)
 	table->time_to_die = ft_atoi(av[2]);
 	table->time_to_eat = ft_atoi(av[3]);
 	table->time_to_sleep = ft_atoi(av[4]);
+	table->start_time = get_time_ms();
 	if (ac == 6)
 		table->must_eat = ft_atoi(av[5]);
 	else

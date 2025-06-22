@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
 INCLUDE = philo.h
 RM = rm -f
 
-SRCS = philo.c parsing.c utils.c routine.c free.c time.c
+SRCS = philo.c parsing.c utils.c routine.c free.c time.c philo_utils.c routine_utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

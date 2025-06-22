@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:30:40 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/20 00:01:15 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,23 @@ typedef struct s_table
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		parse_arguments(int ac, char **av, t_table *table);
-long		get_time_ms(void);
+long	get_time_ms(void);
 void	ft_error(char *message);
 void	ft_usleep(int ms, t_philo *philo);
 void	ft_print_status(t_philo *philo, char *status);
 void	init_philo(t_table *table);
 void	init_mutexes(t_table *table);
+void	init_table(t_table *table);
 void	ft_destroy_mutexes(t_table *table);
 int		is_dead(t_table *table);
 void	*philo_routine(void *arg);
 void	*simulation_monitor(void *arg);
 void	init_philo(t_table *table);
+void	philo_eat(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
+void	init_philos_struct(t_table *table);
+void	ft_last_meal(t_table *table);
+int		ft_all_ate(t_table *table);
 
 #endif

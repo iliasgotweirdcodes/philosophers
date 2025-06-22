@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:20:09 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:33:59 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,31 @@ int	is_dead(t_table *table)
 	dead = table->dead;
 	pthread_mutex_unlock(&table->deadlock);
 	return (dead);
+}
+
+void	init_table(t_table *table)
+{
+	table->philo = malloc(sizeof(t_philo) * table->num_philos);
+	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);
+	if (!table->philo || !table->forks)
+		ft_error(ERR_MALLOC);
+}
+
+void	init_mutexes(t_table *table)
+{
+	int	i;
+
+	i = 0;
+	if (pthread_mutex_init(&table->meal, NULL))
+		ft_error(ERR_MUTEX);
+	if (pthread_mutex_init(&table->print, NULL))
+		ft_error(ERR_MUTEX);
+	if (pthread_mutex_init(&table->deadlock, NULL))
+		ft_error(ERR_MUTEX);
+	while (i < table->num_philos)
+	{
+		if (pthread_mutex_init(&table->forks[i], NULL))
+			ft_error(ERR_MUTEX);
+		i++;
+	}
 }

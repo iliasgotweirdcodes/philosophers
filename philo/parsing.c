@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/18 22:41:20 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/29 16:48:01 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_error(char *message)
 	write(2, message, ft_strlen(message));
 }
 
-long	ft_check_philo(char *str)
+int	ft_check_philo(char *str)
 {
-	long i = 0;
+	int i = 0;
 
 	if (!str || !str[i])
 		return (0);
@@ -60,10 +60,10 @@ int	parse_arguments(int ac, char **av, t_table *table)
 	table->time_to_die = ft_atoi(av[2]);
 	table->time_to_eat = ft_atoi(av[3]);
 	table->time_to_sleep = ft_atoi(av[4]);
-	table->start_time = get_time_ms();
 	if (ac == 6)
 		table->must_eat = ft_atoi(av[5]);
 	else
 		table->must_eat = 0;
 	return (1);
 }
+

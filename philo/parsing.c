@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/29 16:48:01 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/30 17:24:59 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	parse_arguments(int ac, char **av, t_table *table)
 	}
 	table->num_philos = ft_atoi(av[1]);
 	if (table->num_philos > PHILO_MAX)
-		return (write(2, ERR_INPUT, 23), 0);
+		return (ft_error(ERR_INPUT), 0);
 	table->time_to_die = ft_atoi(av[2]);
 	table->time_to_eat = ft_atoi(av[3]);
 	table->time_to_sleep = ft_atoi(av[4]);

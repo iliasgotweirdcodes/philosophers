@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 18:11:16 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/30 21:23:14 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ typedef struct s_table
 	pthread_t		monitor;
 }	t_table;
 
-
+// #define malloc(x) NULL;
 void	ft_error(char *message);
 int		init_table(t_table *table, int argc, char **argv);
 int		init_philos(t_table *table);
-void	init_mutexes(t_table *table);
+int		init_mutexes(t_table *table);
 void	ft_destroy_mutexes(t_table *table);
 int		parse_arguments(int argc, char **argv, t_table *table);
 int		create_philo_threads(t_table *table);

@@ -6,11 +6,28 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 23:55:39 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 21:34:11 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/30 23:53:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	handle_one_philo(t_philo *philo)
+{
+	pthread_mutex_lock(philo->right_fork);
+	ft_print_status(philo, "has taken a fork");
+	ft_usleep(philo->table->time_to_die, philo);
+	pthread_mutex_unlock(philo->right_fork);
+	pthread_mutex_lock(&philo->table->deadlock);
+	if (philo->table->dead == false)
+	{
+		philo->table->dead = true;
+		pthread_mutex_lock(&philo->table->print);
+		printf("%ld %d died\n", get_time_ms() - philo->table->start_time, 1);
+		pthread_mutex_unlock(&philo->table->print);
+	}
+	pthread_mutex_unlock(&philo->table->deadlock);
+}
 
 int	check_all_ate(t_table *table)
 {

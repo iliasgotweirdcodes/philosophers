@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 21:23:14 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/06/30 23:37:39 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_table
 	pthread_t		monitor;
 }	t_table;
 
-// #define malloc(x) NULL;
+
 void	ft_error(char *message);
 int		init_table(t_table *table, int argc, char **argv);
 int		init_philos(t_table *table);
@@ -83,5 +83,6 @@ void	ft_usleep(long sleep_time, t_philo *philo);
 void	ft_print_status(t_philo *philo, char *status);
 int		ft_atoi(char *str);
 int		ft_strlen(char *str);
+void	handle_one_philo(t_philo *philo);
 
 #endif

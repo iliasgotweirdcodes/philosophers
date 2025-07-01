@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 21:55:33 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 06:14:20 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void f()
 	system("leaks -q philo");
 }
 
-int	is_error(t_table *table, int ac, char **av)
+int	init_parse(t_table *table, int ac, char **av)
 {
-	if (ac != 5 && ac != 6)
-		return (free(table) ,ft_error(ERR_INPUT), 1);
 	if (!parse_arguments(ac, av, table))
 		return (free(table), 1);
 	if (init_table(table, ac, av))
@@ -35,10 +33,12 @@ int	main(int ac, char **av)
 	// atexit(f);
 	t_table	*table;
 
+	if (ac != 5 && ac != 6)
+		return (ft_error(ERR_INPUT), 1);
 	table = malloc(sizeof(t_table));
 	if (!table)
 		return (ft_error(ERR_MALLOC), 1);
-	if (is_error(table, ac, av))
+	if (init_parse(table, ac, av))
 		return (1);
 	if (init_philos(table))
 		return (ft_error(ERR_INIT), 1);

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 18:04:53 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 02:06:27 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ void	ft_usleep(long milliseconds, t_philo *philo)
 		usleep(500);
 	}
 }
-

@@ -6,17 +6,11 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:21:53 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 21:22:59 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 00:24:50 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void *halloc(size_t size)
-{
-	(void)size;
-	return NULL;
-}
 
 int	init_table(t_table *table, int argc, char **argv)
 {

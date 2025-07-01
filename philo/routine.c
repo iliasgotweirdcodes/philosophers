@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 23:53:21 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 03:18:09 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	philo_eat(t_philo *philo)
 	t_table	*table;
 
 	table = philo->table;
-	pthread_mutex_lock(philo->right_fork);
-	ft_print_status(philo, "has taken a fork");
 	pthread_mutex_lock(&philo->table->meal);
 	if (philo->table->must_eat != 0 && philo->meals_eaten >= philo->table->must_eat)
 	{
@@ -26,6 +24,8 @@ void	philo_eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_unlock(&philo->table->meal);
+	pthread_mutex_lock(philo->right_fork);
+	ft_print_status(philo, "has taken a fork");
 	pthread_mutex_lock(philo->left_fork);
 	ft_print_status(philo, "has taken a fork");
 	pthread_mutex_lock(&table->meal);
@@ -54,7 +54,7 @@ void	philo_think(t_philo *philo)
 	if (philo->table->num_philos % 2 == 1)
 	{
 		think_time = (philo->table->time_to_eat * 2) - philo->table->time_to_sleep;
-		if (think_time > 0)
+		if (think_time >= 0)
 			ft_usleep(think_time, philo);
 	}
 }
@@ -75,4 +75,5 @@ void	*philo_routine(void *arg)
 		philo_think(philo);
 	}
 	return (NULL);
+
 }

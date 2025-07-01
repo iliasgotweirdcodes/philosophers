@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 23:57:17 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 21:43:32 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 00:24:16 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	join_all(t_table *table, int i)
 		if (pthread_join(table->philo[i].thread, NULL))
 			ft_error(ERR_JOIN);
 }
+
 int	create_philo_threads(t_table *table)
 {
 	int	i;

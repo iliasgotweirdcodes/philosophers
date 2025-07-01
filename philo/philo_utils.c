@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 23:57:17 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 00:24:16 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 22:56:13 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	create_philo_threads(t_table *table)
 	i = 0;
 	while (i < table->num_philos)
 	{
-		if (pthread_create(&table->philo[i].thread, NULL, philo_routine, &table->philo[i]) != 0)
+		if (pthread_create(&table->philo[i].thread,
+				NULL, philo_routine, &table->philo[i]) != 0)
 		{
 			join_all(table, i);
 			ft_error(ERR_THREAD);
@@ -59,4 +60,3 @@ void	join_threads(t_table *table)
 	if (pthread_join(table->monitor, NULL) != 0)
 		ft_error(ERR_JOIN);
 }
-

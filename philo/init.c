@@ -6,18 +6,18 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:21:53 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 00:24:50 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 23:59:27 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	init_table(t_table *table, int argc, char **argv)
+int	init_table(t_table *table, int ac, char **av)
 {
-	(void)argc;
-	(void)argv;
-
+	(void)ac;
+	(void)av;
 	table->dead = false;
+	table->sim_done = false;
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);
 	if (!table->forks)
 		return (free(table), 1);
@@ -38,8 +38,6 @@ int	init_philos(t_table *table)
 		table->philo[i].id = i + 1;
 		table->philo[i].last_meal = table->start_time;
 		table->philo[i].meals_eaten = 0;
-		table->philo[i].left = i;
-		table->philo[i].right = (i + 1) % table->num_philos;
 		table->philo[i].left_fork = &table->forks[i];
 		table->philo[i].right_fork = &table->forks[(i + 1) % table->num_philos];
 		table->philo[i].table = table;

@@ -6,16 +6,11 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 06:14:20 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:35:18 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void f()
-{
-	system("leaks -q philo");
-}
 
 int	init_parse(t_table *table, int ac, char **av)
 {
@@ -30,7 +25,6 @@ int	init_parse(t_table *table, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	// atexit(f);
 	t_table	*table;
 
 	if (ac != 5 && ac != 6)

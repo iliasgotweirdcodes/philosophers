@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/06/30 17:24:59 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 23:37:08 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,53 +17,60 @@ void	ft_error(char *message)
 	write(2, message, ft_strlen(message));
 }
 
-int	ft_check_philo(char *str)
+int	ft_parse_int(char *str)
 {
-	int i = 0;
+	long	res;
+	int		i;
 
+	res = 0;
+	i = 0;
 	if (!str || !str[i])
-		return (0);
+		return (-1);
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-')
-		return (0);
-	if (str[i] == '+')
+		return (-1);
+	while (str[i] == '+')
 		i++;
-	if (!(str[i] >= '0' && str[i] <= '9'))
-		return (0);
-	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - '0');
+		if (res > INT_MAX)
+			return (-1);
 		i++;
+	}
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] != '\0')
-		return (0);
-	return (1);
+		return (-1);
+	return ((int)res);
 }
 
 int	parse_arguments(int ac, char **av, t_table *table)
 {
-	int i;
+	int	i;
+	int	value;
 
 	i = 1;
 	while (i < ac)
 	{
-		if (!ft_check_philo(av[i]) || ft_atoi(av[i]) <= 0)
+		value = ft_parse_int(av[i]);
+		if (value <= 0)
 		{
 			write(2, ERR_INPUT, 23);
 			return (0);
 		}
 		i++;
 	}
-	table->num_philos = ft_atoi(av[1]);
+	table->num_philos = ft_parse_int(av[1]);
 	if (table->num_philos > PHILO_MAX)
 		return (ft_error(ERR_INPUT), 0);
-	table->time_to_die = ft_atoi(av[2]);
-	table->time_to_eat = ft_atoi(av[3]);
-	table->time_to_sleep = ft_atoi(av[4]);
+	table->time_to_die = ft_parse_int(av[2]);
+	table->time_to_eat = ft_parse_int(av[3]);
+	table->time_to_sleep = ft_parse_int(av[4]);
 	if (ac == 6)
-		table->must_eat = ft_atoi(av[5]);
+		table->must_eat = ft_parse_int(av[5]);
 	else
 		table->must_eat = 0;
 	return (1);
 }
-

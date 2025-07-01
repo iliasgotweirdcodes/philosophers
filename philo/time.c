@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 02:06:27 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:23:46 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ long	get_time_ms(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	ft_usleep(long milliseconds, t_philo *philo)
+void	ft_usleep(long ms, t_philo *philo)
 {
 	long	start_time;
 
 	start_time = get_time_ms();
-	while ((get_time_ms() - start_time) < milliseconds)
+	while ((get_time_ms() - start_time) < ms)
 	{
 		if (is_dead(philo->table))
 			break ;

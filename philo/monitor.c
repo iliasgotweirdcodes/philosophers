@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 06:27:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 06:27:46 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/02 00:41:51 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	handle_one_philo(t_philo *philo)
 	ft_usleep(philo->table->time_to_die, philo);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&philo->table->deadlock);
+	if (philo->table->sim_done)
+	{
+		pthread_mutex_unlock(&philo->table->deadlock);
+		return ;
+	}
 	if (philo->table->dead == false)
 	{
 		philo->table->dead = true;
@@ -55,6 +60,11 @@ int	check_all_ate(t_table *table)
 
 int	check_philo_death(t_table *table, int i, long current_time)
 {
+	if (table->sim_done)
+	{
+		pthread_mutex_unlock(&table->deadlock);
+		return (1);
+	}
 	pthread_mutex_lock(&table->deadlock);
 	if (!table->dead)
 	{
@@ -99,15 +109,15 @@ void	*simulation_monitor(void *arg)
 	table = (t_table *)arg;
 	while (1)
 	{
-		if (check_starvation(table))
-			break ;
 		if (table->must_eat > 0 && check_all_ate(table))
 		{
 			pthread_mutex_lock(&table->deadlock);
-			table->dead = true;
+			table->sim_done = true;
 			pthread_mutex_unlock(&table->deadlock);
 			break ;
 		}
+		if (check_starvation(table))
+			break ;
 		usleep(1000);
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 03:18:09 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/02 00:43:18 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	philo_eat(t_philo *philo)
 
 	table = philo->table;
 	pthread_mutex_lock(&philo->table->meal);
-	if (philo->table->must_eat != 0 && philo->meals_eaten >= philo->table->must_eat)
+	if (philo->table->must_eat != 0
+		&& philo->meals_eaten >= philo->table->must_eat
+		&& simulation_should_stop(philo->table))
 	{
 		pthread_mutex_unlock(&philo->table->meal);
 		return ;
@@ -42,6 +44,8 @@ void	philo_eat(t_philo *philo)
 
 void	philo_sleep(t_philo *philo)
 {
+	if (simulation_should_stop(philo->table))
+		return;
 	ft_print_status(philo, "is sleeping");
 	ft_usleep(philo->table->time_to_sleep, philo);
 }
@@ -49,11 +53,17 @@ void	philo_sleep(t_philo *philo)
 void	philo_think(t_philo *philo)
 {
 	long	think_time;
+	int		sleep_time;
+	int		eat_time;
 
+	if (simulation_should_stop(philo->table))
+		return;
+	sleep_time = philo->table->time_to_sleep;
+	eat_time = philo->table->time_to_eat;
 	ft_print_status(philo, "is thinking");
 	if (philo->table->num_philos % 2 == 1)
 	{
-		think_time = (philo->table->time_to_eat * 2) - philo->table->time_to_sleep;
+		think_time = (eat_time * 2) - sleep_time;
 		if (think_time >= 0)
 			ft_usleep(think_time, philo);
 	}
@@ -68,12 +78,11 @@ void	*philo_routine(void *arg)
 		ft_usleep(philo->table->time_to_eat / 2, philo);
 	if (philo->table->num_philos == 1)
 		handle_one_philo(philo);
-	while (!is_dead(philo->table))
+	while (!simulation_should_stop(philo->table))
 	{
 		philo_eat(philo);
 		philo_sleep(philo);
 		philo_think(philo);
 	}
 	return (NULL);
-
 }

@@ -6,11 +6,18 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/03 00:03:40 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/03 00:12:48 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	should_stop_eating(t_philo *philo)
+{
+	return (philo->table->must_eat != 0
+		&& philo->meals_eaten >= philo->table->must_eat
+		&& simulation_should_stop(philo->table));
+}
 
 void	philo_eat(t_philo *philo)
 {
@@ -18,8 +25,7 @@ void	philo_eat(t_philo *philo)
 
 	table = philo->table;
 	pthread_mutex_lock(&philo->table->meal);
-	if (philo->meals_eaten >= philo->table->must_eat
-		&& simulation_should_stop(philo->table))
+	if (should_stop_eating(philo))
 	{
 		pthread_mutex_unlock(&philo->table->meal);
 		return ;

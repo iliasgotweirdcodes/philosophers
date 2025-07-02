@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 19:35:18 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:26:10 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	join_threads(table);
 	free(table->philo);
 	free(table->forks);
-	ft_destroy_mutexes(table);
+	destroy_mutexes(table);
 	free(table);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/02 00:00:12 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:26:18 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_error(char *message);
 int		init_table(t_table *table, int argc, char **argv);
 int		init_philos(t_table *table);
 int		init_mutexes(t_table *table);
-void	ft_destroy_mutexes(t_table *table);
+void	destroy_mutexes(t_table *table);
 int		ft_parse_int(char *str);
 int		parse_arguments(int argc, char **argv, t_table *table);
 int		create_philo_threads(t_table *table);

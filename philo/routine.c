@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/02 00:43:18 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/03 00:03:40 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	philo_eat(t_philo *philo)
 
 	table = philo->table;
 	pthread_mutex_lock(&philo->table->meal);
-	if (philo->table->must_eat != 0
-		&& philo->meals_eaten >= philo->table->must_eat
+	if (philo->meals_eaten >= philo->table->must_eat
 		&& simulation_should_stop(philo->table))
 	{
 		pthread_mutex_unlock(&philo->table->meal);
@@ -45,7 +44,7 @@ void	philo_eat(t_philo *philo)
 void	philo_sleep(t_philo *philo)
 {
 	if (simulation_should_stop(philo->table))
-		return;
+		return ;
 	ft_print_status(philo, "is sleeping");
 	ft_usleep(philo->table->time_to_sleep, philo);
 }
@@ -57,7 +56,7 @@ void	philo_think(t_philo *philo)
 	int		eat_time;
 
 	if (simulation_should_stop(philo->table))
-		return;
+		return ;
 	sleep_time = philo->table->time_to_sleep;
 	eat_time = philo->table->time_to_eat;
 	ft_print_status(philo, "is thinking");

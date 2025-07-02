@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:21:53 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 23:59:27 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:28:01 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	init_mutexes(t_table *table)
 	return (0);
 }
 
-void	ft_destroy_mutexes(t_table *table)
+void	destroy_mutexes(t_table *table)
 {
 	int	i;
 

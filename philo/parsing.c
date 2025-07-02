@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/01 23:37:08 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:26:59 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ int	ft_parse_int(char *str)
 int	parse_arguments(int ac, char **av, t_table *table)
 {
 	int	i;
-	int	value;
+	int	val;
 
 	i = 1;
 	while (i < ac)
 	{
-		value = ft_parse_int(av[i]);
-		if (value <= 0)
+		val = ft_parse_int(av[i]);
+		if (val <= 0)
 		{
 			write(2, ERR_INPUT, 23);
 			return (0);

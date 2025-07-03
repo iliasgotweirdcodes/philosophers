@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 06:27:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/02 21:27:30 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/03 16:42:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ int	check_all_ate(t_table *table)
 
 int	check_philo_death(t_table *table, int i, long current_time)
 {
-	if (table->sim_done)
-	{
-		pthread_mutex_unlock(&table->deadlock);
-		return (1);
-	}
 	pthread_mutex_lock(&table->deadlock);
 	if (!table->dead)
 	{

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:21:53 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/03 17:07:00 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:01:22 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,37 +46,39 @@ int	init_philos(t_table *table)
 	return (0);
 }
 
+int	init_table_mutexes(t_table *table)
+{
+	if (pthread_mutex_init(&table->meal, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&table->print, NULL) != 0)
+	{
+		pthread_mutex_destroy(&table->meal);
+		return (1);
+	}
+	if (pthread_mutex_init(&table->deadlock, NULL) != 0)
+	{
+		pthread_mutex_destroy(&table->meal);
+		pthread_mutex_destroy(&table->print);
+		return (1);
+	}
+	return (0);
+}
+
 int	init_mutexes(t_table *table)
 {
 	int	i;
 
-	if (pthread_mutex_init(&table->meal, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&table->print, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&table->deadlock, NULL) != 0)
+	if (init_table_mutexes(table))
 		return (1);
 	i = 0;
 	while (i < table->num_philos)
 	{
 		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
+		{
+			clean_mutexes(table, i);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
-}
-
-void	destroy_mutexes(t_table *table)
-{
-	int	i;
-
-	pthread_mutex_destroy(&table->meal);
-	pthread_mutex_destroy(&table->print);
-	pthread_mutex_destroy(&table->deadlock);
-	i = 0;
-	while (i < table->num_philos)
-	{
-		pthread_mutex_destroy(&table->forks[i]);
-		i++;
-	}
 }

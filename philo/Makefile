@@ -1,11 +1,11 @@
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g3
-INCLUDE = philo.h
+CFLAGS = -Wall -Wextra -Werror
+HF = philo.h
 RM = rm -f
 
-SRCS = philo.c parsing.c utils.c routine.c time.c philo_utils.c monitor.c init.c
+SRCS = philo.c parsing.c utils.c routine.c time.c philo_utils.c monitor.c init.c clean.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
@@ -13,7 +13,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c $(INCLUDE)
+%.o: %.c $(HF)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/02 21:26:10 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:02:51 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_parse(t_table *table, int ac, char **av)
 	if (init_table(table, ac, av))
 		return (1);
 	if (init_mutexes(table))
-		return (1);
+		return (free(table), 1);
 	return (0);
 }
 

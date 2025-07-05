@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/03 17:07:08 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:02:58 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void	ft_print_status(t_philo *philo, char *status);
 int		ft_strlen(char *str);
 void	handle_one_philo(t_philo *philo);
 int		simulation_should_stop(t_table *table);
+void	clean_mutexes(t_table *table, int i);
+int		init_table_mutexes(t_table *table);
 
 #endif

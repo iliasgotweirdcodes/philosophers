@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/06 15:30:54 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:19:31 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_philo
 	pthread_mutex_t	*right_fork;
 	struct s_table	*table;
 }	t_philo;
+
 
 typedef struct s_table
 {

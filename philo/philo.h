@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/06 18:19:31 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:32:42 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_philo
 	struct s_table	*table;
 }	t_philo;
 
-
 typedef struct s_table
 {
 	int				num_philos;
@@ -62,7 +61,7 @@ typedef struct s_table
 }	t_table;
 
 void	ft_error(char *message);
-int		init_table(t_table *table, int argc, char **argv);
+int		init_table(t_table *table);
 int		init_philos(t_table *table);
 int		init_mutexes(t_table *table);
 void	destroy_mutexes(t_table *table);

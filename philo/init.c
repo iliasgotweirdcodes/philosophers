@@ -6,16 +6,14 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:21:53 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/05 18:01:22 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:54:30 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	init_table(t_table *table, int ac, char **av)
+int	init_table(t_table *table)
 {
-	(void)ac;
-	(void)av;
 	table->dead = false;
 	table->sim_done = false;
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);

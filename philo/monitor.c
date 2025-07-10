@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 06:27:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/06 18:19:13 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:23:40 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	handle_one_philo(t_philo *philo)
 	pthread_mutex_lock(&philo->table->deadlock);
 	if (philo->table->dead == false)
 	{
-		pthread_mutex_unlock(&philo->table->deadlock);
-		pthread_mutex_lock(&philo->table->deadlock);
 		philo->table->dead = true;
 		pthread_mutex_unlock(&philo->table->deadlock);
 		pthread_mutex_lock(&philo->table->print);

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:16 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/02 21:26:59 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:26:43 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_parse_int(char *str)
 		i++;
 	if (str[i] == '-')
 		return (-1);
-	while (str[i] == '+')
+	if (str[i] == '+')
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{

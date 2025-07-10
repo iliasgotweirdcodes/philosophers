@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/05 15:34:55 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:15:23 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 
 int	should_stop_eating(t_philo *philo)
 {
-	return (philo->table->must_eat != 0
+	if (philo->table->must_eat != 0
 		&& philo->meals_eaten >= philo->table->must_eat
-		&& simulation_should_stop(philo->table));
+		&& simulation_should_stop(philo->table))
+	{
+		return (1);
+	}
+	return (0);
 }
 
 void	philo_eat(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:49 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 17:39:12 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:34:58 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
-
 
 int	simulation_should_stop(t_table *table)
 {

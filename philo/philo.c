@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 12:22:13 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 23:19:51 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	init_parse(t_table *table, int ac, char **av)
 {
 	if (!parse_arguments(ac, av, table))
-		return (free(table), 1);
+		return (1);
 	if (init_table(table))
 		return (1);
 	if (init_mutexes(table))
-		return (free(table), 1);
+		return (1);
 	return (0);
 }
 
@@ -33,14 +33,11 @@ int	main(int ac, char **av)
 	if (!table)
 		return (ft_error(ERR_MALLOC), 1);
 	if (init_parse(table, ac, av))
-		return (1);
+		return (free(table->forks), free(table->philo), free(table), 1);
 	if (init_philos(table))
-		return (ft_error(ERR_INIT), 1);
+		return (free(table), free(table->philo), free(table->forks), 1);
 	create_philo_threads(table);
 	join_threads(table);
-	free(table->philo);
-	free(table->forks);
 	destroy_mutexes(table);
-	free(table);
-	return (0);
+	return (free(table->philo), free(table->forks), free(table), 0);
 }

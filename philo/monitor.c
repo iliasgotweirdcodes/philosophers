@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 06:27:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 10:59:23 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:25:57 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	check_all_ate(t_table *table)
 			pthread_mutex_unlock(&table->meal);
 			break ;
 		}
-		pthread_mutex_unlock(&table->meal);
+		else
+			pthread_mutex_unlock(&table->meal);
 		i++;
 	}
 	return (all_ate);
@@ -110,7 +111,7 @@ void	*simulation_monitor(void *arg)
 		}
 		if (check_starvation(table))
 			break ;
-		usleep(1000);
+		usleep(100);
 	}
 	return (NULL);
 }

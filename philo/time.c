@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/09 18:01:47 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:36:20 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_usleep(long ms, t_philo *philo)
 	start_time = get_time_ms();
 	while ((get_time_ms() - start_time) < ms)
 	{
-		if (is_dead(philo->table))
+		if (simulation_should_stop(philo->table))
 			break ;
 		usleep(500);
 	}

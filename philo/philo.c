@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/09 18:20:03 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:22:13 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 	if (!table)
 		return (ft_error(ERR_MALLOC), 1);
 	if (init_parse(table, ac, av))
-		return (ft_error(ERR_INIT), 1);
+		return (1);
 	if (init_philos(table))
 		return (ft_error(ERR_INIT), 1);
 	create_philo_threads(table);

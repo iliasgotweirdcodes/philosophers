@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/09 17:32:42 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 23:34:33 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define ERR_MALLOC "Error: Malloc failed!\n"
 # define ERR_ARGS "Error: Wrong number of args!\n"
 # define ERR_INPUT "Error: Invalid input!\n"
-# define ERR_INIT "Error: init failed!\n"
 
 typedef struct s_philo
 {

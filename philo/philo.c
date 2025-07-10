@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 23:19:51 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/10 23:35:42 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	main(int ac, char **av)
 	t_table	*table;
 
 	if (ac != 5 && ac != 6)
-		return (ft_error(ERR_INPUT), 1);
+		return (ft_error(ERR_ARGS), 1);
 	table = malloc(sizeof(t_table));
 	if (!table)
 		return (ft_error(ERR_MALLOC), 1);
 	if (init_parse(table, ac, av))
-		return (free(table->forks), free(table->philo), free(table), 1);
+		return (free(table->philo), free(table->forks), free(table), 1);
 	if (init_philos(table))
-		return (free(table), free(table->philo), free(table->forks), 1);
+		return (free(table->philo), free(table->forks), free(table), 1);
 	create_philo_threads(table);
 	join_threads(table);
 	destroy_mutexes(table);

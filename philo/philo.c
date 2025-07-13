@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:38 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 23:35:42 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/13 12:16:07 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ int	init_parse(t_table *table, int ac, char **av)
 		return (1);
 	return (0);
 }
+void f ()
+{
+	system("leaks philo");
+}
 
 int	main(int ac, char **av)
 {
+	atexit(f);
 	t_table	*table;
 
 	if (ac != 5 && ac != 6)

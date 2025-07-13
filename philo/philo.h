@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 23:19:22 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 23:34:33 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:58:11 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define PHILO_MAX 200
 # define ERR_MUTEX "Error: Mutex creation failed!\n"
 # define ERR_THREAD "Error: Thread creation failed!\n"
-# define ERR_JOIN "Error: Thread join failed!\n"
 # define ERR_TIME "Error: gettimeofday failed!\n"
 # define ERR_MALLOC "Error: Malloc failed!\n"
 # define ERR_ARGS "Error: Wrong number of args!\n"
@@ -75,7 +74,6 @@ void	*philo_routine(void *arg);
 void	*simulation_monitor(void *arg);
 int		check_all_ate(t_table *table);
 int		check_starvation(t_table *table);
-int		is_dead(t_table *table);
 long	get_time_ms(void);
 void	ft_usleep(long sleep_time, t_philo *philo);
 void	ft_print_status(t_philo *philo, char *status);

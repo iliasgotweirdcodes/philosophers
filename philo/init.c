@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:21:53 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 23:14:06 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:36:55 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	init_table(t_table *table)
 	table->sim_done = false;
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);
 	if (!table->forks)
-		return (1);
+		return (0);
 	table->philo = malloc(sizeof(t_philo) * table->num_philos);
 	if (!table->philo)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int	init_philos(t_table *table)
@@ -41,7 +41,7 @@ int	init_philos(t_table *table)
 		table->philo[i].table = table;
 		i++;
 	}
-	return (0);
+	return (1);
 }
 
 int	init_table_mutexes(t_table *table)
@@ -74,9 +74,9 @@ int	init_mutexes(t_table *table)
 		if (pthread_mutex_init(&table->forks[i], NULL) != 0)
 		{
 			clean_mutexes(table, i);
-			return (1);
+			return (0);
 		}
 		i++;
 	}
-	return (0);
+	return (1);
 }

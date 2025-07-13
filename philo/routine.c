@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/22 17:23:09 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 17:21:26 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:57:18 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->table->num_philos == 1)
+		handle_one_philo(philo);
 	if (philo->id % 2 == 0)
 	{
 		philo_think(philo);
 		ft_usleep(philo->table->time_to_eat / 2, philo);
 	}
-	if (philo->table->num_philos == 1)
-		handle_one_philo(philo);
 	while (!simulation_should_stop(philo->table))
 	{
 		philo_eat(philo);

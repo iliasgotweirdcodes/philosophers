@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 06:27:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/10 17:25:57 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/13 19:57:49 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_all_ate(t_table *table)
 	return (all_ate);
 }
 
-int	check_philo_death(t_table *table, int i, long current_time)
+int	set_philo_dead(t_table *table, int i, long current_time)
 {
 	pthread_mutex_lock(&table->deadlock);
 	if (!table->dead)
@@ -89,7 +89,7 @@ int	check_starvation(t_table *table)
 		pthread_mutex_unlock(&table->meal);
 		time_diff = current_time - last_meal;
 		if (time_diff > table->time_to_die)
-			return (check_philo_death(table, i, current_time));
+			return (set_philo_dead(table, i, current_time));
 		i++;
 	}
 	return (0);

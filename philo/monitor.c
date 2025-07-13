@@ -6,7 +6,7 @@
 /*   By: ilel-hla <ilel-hla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 06:27:44 by ilel-hla          #+#    #+#             */
-/*   Updated: 2025/07/13 19:57:49 by ilel-hla         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:43:51 by ilel-hla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	set_philo_dead(t_table *table, int i, long current_time)
 	}
 	else
 		pthread_mutex_unlock(&table->deadlock);
-	return (1);
+	return (0);
 }
 
 int	check_starvation(t_table *table)
@@ -102,6 +102,13 @@ void	*simulation_monitor(void *arg)
 	table = (t_table *)arg;
 	while (1)
 	{
+		pthread_mutex_lock(&table->deadlock);
+		if (table->dead || table->sim_done)
+		{
+			pthread_mutex_unlock(&table->deadlock);
+			break;
+		}
+		pthread_mutex_unlock(&table->deadlock);
 		if (table->must_eat > 0 && check_all_ate(table))
 		{
 			pthread_mutex_lock(&table->deadlock);
